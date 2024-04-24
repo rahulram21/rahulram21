@@ -22,15 +22,17 @@ public:
 
     int publications;
     static int countP;
+    int countPobj;
     Professor(){
         countP++;
+        countPobj=countP;
     }
     void getdata(){
         cin>>name>>age>>publications;
     };
     void putdata(){
         // cout<<"Prof name: "<<name<<", age: "<<age<<", "<<publications<<" , Count : "<<countP; 
-        cout<<name<<" "<<age<<" "<<publications<<" "<<countP<<endl;
+        cout<<name<<" "<<age<<" "<<publications<<" "<<countPobj<<endl;
     }
 };
 int Professor::countP = 0;
@@ -46,7 +48,6 @@ public:
     }
     void getdata(){
         cin>>name>>age;
-        int marks[6];
         int i=0;
         while(i<6){
             cin>>marks[i];
@@ -54,10 +55,11 @@ public:
         }
     };
     void putdata(){
-        int sum=0, i=0;
-        while(i<6){
-            sum += marks[i];
-            i++;
+        int sum=0;
+        int j=0;
+        while(j<6){
+            sum += marks[j];
+            j++;
         }
         cout<<name<<" "<<age<<" "<<sum<<" "<<countS<<endl;
     }
@@ -79,11 +81,12 @@ int main(){
             per[i] = new Professor;
 
         }
-        else per[i] = new Student; // Else the current object is of type Student
+        else per[i] = new Student;
 
-        per[i]->getdata(); // Get the data from the user.
+        per[i]->getdata();
 
     }
+   
 
     for(int i=0;i<n;i++)
         per[i]->putdata(); // Print the required output for each object.
